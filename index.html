@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>High and Low</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+    const config = {
+        type: Phaser.AUTO,
+        width: 1210,
+        height: 600,
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+    const game = new Phaser.Game(config);
+
+    // 0~9の乱数を生成
+    const num = Math.floor(Math.random() * 13) + 1;
+
+    function preload () {
+        this.load.image('sp1', 'assets/spade/sp1.png');
+        this.load.image('sp2', 'assets/spade/sp2.png');
+        this.load.image('sp3', 'assets/spade/sp3.png');
+        this.load.image('sp4', 'assets/spade/sp4.png');
+        this.load.image('sp5', 'assets/spade/sp5.png');
+        this.load.image('sp6', 'assets/spade/sp6.png');
+        this.load.image('sp7', 'assets/spade/sp7.png');
+        this.load.image('sp8', 'assets/spade/sp8.png');
+        this.load.image('sp9', 'assets/spade/sp9.png');
+        this.load.image('sp10', 'assets/spade/sp10.png');
+        this.load.image('sp11', 'assets/spade/sp11.png');
+        this.load.image('sp12', 'assets/spade/sp12.png');
+        this.load.image('sp13', 'assets/spade/sp13.png');
+    }
+
+    function create () {
+        switch (num) {
+            case 1:
+                this.add.image(200, 300, 'sp1');
+                break;
+            case 2:
+                this.add.image(200, 300, 'sp2');
+                break;
+            case 3:
+                this.add.image(200, 300, 'sp3');
+                break;
+            case 4:
+                this.add.image(200, 300, 'sp4');
+                break;
+            case 5:
+                this.add.image(200, 300, 'sp5');
+                break;
+            case 6:
+                this.add.image(200, 300, 'sp6');
+                break;
+            case 7:
+                this.add.image(200, 300, 'sp7');
+                break;
+            case 8:
+                this.add.image(200, 300, 'sp8');
+                break;
+            case 9:
+                this.add.image(200, 300, 'sp9');
+                break;
+            case 10:
+                this.add.image(200, 300, 'sp10');
+                break;
+            case 11:
+                this.add.image(200, 300, 'sp11');
+                break;
+            case 12:
+                this.add.image(200, 300, 'sp12');
+                break;
+            case 13:
+                this.add.image(200, 300, 'sp13');
+                break;
+        }
+    }
+
+    function update () {
+
+    }
+
+
+</script>
+
+</body>
+</html>
