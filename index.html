@@ -23,10 +23,16 @@
 
     const game = new Phaser.Game(config);
 
+    // スート
+    const suit = Math.floor(Math.random() * 4) + 1;
     // 1~13の乱数を生成
     const num = Math.floor(Math.random() * 13) + 1;
 
     function preload () {
+        // ボタン
+        this.load.image('high', 'assets/button1.png');
+        this.load.image('low', 'assets/button2.png');
+        // スペード
         this.load.image('sp1', 'assets/spade/sp1.png');
         this.load.image('sp2', 'assets/spade/sp2.png');
         this.load.image('sp3', 'assets/spade/sp3.png');
@@ -40,49 +46,228 @@
         this.load.image('sp11', 'assets/spade/sp11.png');
         this.load.image('sp12', 'assets/spade/sp12.png');
         this.load.image('sp13', 'assets/spade/sp13.png');
+        // ハート
+        this.load.image('hr1', 'assets/heart/hr1.jpg');
+        this.load.image('hr2', 'assets/heart/hr2.jpg');
+        this.load.image('hr3', 'assets/heart/hr3.jpg');
+        this.load.image('hr4', 'assets/heart/hr4.jpg');
+        this.load.image('hr5', 'assets/heart/hr5.jpg');
+        this.load.image('hr6', 'assets/heart/hr6.jpg');
+        this.load.image('hr7', 'assets/heart/hr7.jpg');
+        this.load.image('hr8', 'assets/heart/hr8.jpg');
+        this.load.image('hr9', 'assets/heart/hr9.jpg');
+        this.load.image('hr10', 'assets/heart/hr10.jpg');
+        this.load.image('hr11', 'assets/heart/hr11.jpg');
+        this.load.image('hr12', 'assets/heart/hr12.jpg');
+        this.load.image('hr13', 'assets/heart/hr13.jpg');
+        // クラブ
+        this.load.image('cl1', 'assets/club/cl1.jpg');
+        this.load.image('cl2', 'assets/club/cl2.jpg');
+        this.load.image('cl3', 'assets/club/cl3.jpg');
+        this.load.image('cl4', 'assets/club/cl4.jpg');
+        this.load.image('cl5', 'assets/club/cl5.jpg');
+        this.load.image('cl6', 'assets/club/cl6.jpg');
+        this.load.image('cl7', 'assets/club/cl7.jpg');
+        this.load.image('cl8', 'assets/club/cl8.jpg');
+        this.load.image('cl9', 'assets/club/cl9.jpg');
+        this.load.image('cl10', 'assets/club/cl10.jpg');
+        this.load.image('cl11', 'assets/club/cl11.jpg');
+        this.load.image('cl12', 'assets/club/cl12.jpg');
+        this.load.image('cl13', 'assets/club/cl13.jpg');
+        // ダイヤ
+        this.load.image('di1', 'assets/diamond/di1.jpg');
+        this.load.image('di2', 'assets/diamond/di2.jpg');
+        this.load.image('di3', 'assets/diamond/di3.jpg');
+        this.load.image('di4', 'assets/diamond/di4.jpg');
+        this.load.image('di5', 'assets/diamond/di5.jpg');
+        this.load.image('di6', 'assets/diamond/di6.jpg');
+        this.load.image('di7', 'assets/diamond/di7.jpg');
+        this.load.image('di8', 'assets/diamond/di8.jpg');
+        this.load.image('di9', 'assets/diamond/di9.jpg');
+        this.load.image('di10', 'assets/diamond/di10.jpg');
+        this.load.image('di11', 'assets/diamond/di11.jpg');
+        this.load.image('di12', 'assets/diamond/di12.jpg');
+        this.load.image('di13', 'assets/diamond/di13.jpg');
     }
 
     function create () {
-        switch (num) {
-            case 1:
-                this.add.image(200, 300, 'sp1');
-                break;
-            case 2:
-                this.add.image(200, 300, 'sp2');
-                break;
-            case 3:
-                this.add.image(200, 300, 'sp3');
-                break;
-            case 4:
-                this.add.image(200, 300, 'sp4');
-                break;
-            case 5:
-                this.add.image(200, 300, 'sp5');
-                break;
-            case 6:
-                this.add.image(200, 300, 'sp6');
-                break;
-            case 7:
-                this.add.image(200, 300, 'sp7');
-                break;
-            case 8:
-                this.add.image(200, 300, 'sp8');
-                break;
-            case 9:
-                this.add.image(200, 300, 'sp9');
-                break;
-            case 10:
-                this.add.image(200, 300, 'sp10');
-                break;
-            case 11:
-                this.add.image(200, 300, 'sp11');
-                break;
-            case 12:
-                this.add.image(200, 300, 'sp12');
-                break;
-            case 13:
-                this.add.image(200, 300, 'sp13');
-                break;
+        this.add.image(600, 250, 'high');
+        this.add.image(600, 350, 'low');
+        if (suit === 1) {
+            // スペード
+            switch (num) {
+                case 1:
+                    this.add.image(200, 300, 'sp1');
+                    break;
+                case 2:
+                    this.add.image(200, 300, 'sp2');
+                    break;
+                case 3:
+                    this.add.image(200, 300, 'sp3');
+                    break;
+                case 4:
+                    this.add.image(200, 300, 'sp4');
+                    break;
+                case 5:
+                    this.add.image(200, 300, 'sp5');
+                    break;
+                case 6:
+                    this.add.image(200, 300, 'sp6');
+                    break;
+                case 7:
+                    this.add.image(200, 300, 'sp7');
+                    break;
+                case 8:
+                    this.add.image(200, 300, 'sp8');
+                    break;
+                case 9:
+                    this.add.image(200, 300, 'sp9');
+                    break;
+                case 10:
+                    this.add.image(200, 300, 'sp10');
+                    break;
+                case 11:
+                    this.add.image(200, 300, 'sp11');
+                    break;
+                case 12:
+                    this.add.image(200, 300, 'sp12');
+                    break;
+                case 13:
+                    this.add.image(200, 300, 'sp13');
+                    break;
+            }
+        }
+        if (suit === 2) {
+            // ハート
+            switch (num) {
+                case 1:
+                    this.add.image(200, 300, 'hr1');
+                    break;
+                case 2:
+                    this.add.image(200, 300, 'hr2');
+                    break;
+                case 3:
+                    this.add.image(200, 300, 'hr3');
+                    break;
+                case 4:
+                    this.add.image(200, 300, 'hr4');
+                    break;
+                case 5:
+                    this.add.image(200, 300, 'hr5');
+                    break;
+                case 6:
+                    this.add.image(200, 300, 'hr6');
+                    break;
+                case 7:
+                    this.add.image(200, 300, 'hr7');
+                    break;
+                case 8:
+                    this.add.image(200, 300, 'hr8');
+                    break;
+                case 9:
+                    this.add.image(200, 300, 'hr9');
+                    break;
+                case 10:
+                    this.add.image(200, 300, 'hr10');
+                    break;
+                case 11:
+                    this.add.image(200, 300, 'hr11');
+                    break;
+                case 12:
+                    this.add.image(200, 300, 'hr12');
+                    break;
+                case 13:
+                    this.add.image(200, 300, 'hr13');
+                    break;
+            }
+        }
+        if (suit === 3) {
+            // クラブ
+            switch (num) {
+                case 1:
+                    this.add.image(200, 300, 'cl1');
+                    break;
+                case 2:
+                    this.add.image(200, 300, 'cl2');
+                    break;
+                case 3:
+                    this.add.image(200, 300, 'cl3');
+                    break;
+                case 4:
+                    this.add.image(200, 300, 'cl4');
+                    break;
+                case 5:
+                    this.add.image(200, 300, 'cl5');
+                    break;
+                case 6:
+                    this.add.image(200, 300, 'cl6');
+                    break;
+                case 7:
+                    this.add.image(200, 300, 'cl7');
+                    break;
+                case 8:
+                    this.add.image(200, 300, 'cl8');
+                    break;
+                case 9:
+                    this.add.image(200, 300, 'cl9');
+                    break;
+                case 10:
+                    this.add.image(200, 300, 'cl10');
+                    break;
+                case 11:
+                    this.add.image(200, 300, 'cl11');
+                    break;
+                case 12:
+                    this.add.image(200, 300, 'cl12');
+                    break;
+                case 13:
+                    this.add.image(200, 300, 'cl13');
+                    break;
+            }
+        }
+        if (suit === 4) {
+            switch (num) {
+                // ダイヤ
+                case 1:
+                    this.add.image(200, 300, 'di1');
+                    break;
+                case 2:
+                    this.add.image(200, 300, 'di2');
+                    break;
+                case 3:
+                    this.add.image(200, 300, 'di3');
+                    break;
+                case 4:
+                    this.add.image(200, 300, 'di4');
+                    break;
+                case 5:
+                    this.add.image(200, 300, 'di5');
+                    break;
+                case 6:
+                    this.add.image(200, 300, 'di6');
+                    break;
+                case 7:
+                    this.add.image(200, 300, 'di7');
+                    break;
+                case 8:
+                    this.add.image(200, 300, 'di8');
+                    break;
+                case 9:
+                    this.add.image(200, 300, 'di9');
+                    break;
+                case 10:
+                    this.add.image(200, 300, 'di10');
+                    break;
+                case 11:
+                    this.add.image(200, 300, 'di11');
+                    break;
+                case 12:
+                    this.add.image(200, 300, 'di12');
+                    break;
+                case 13:
+                    this.add.image(200, 300, 'di13');
+                    break;
+            }
         }
     }
 
