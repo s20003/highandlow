@@ -16,22 +16,28 @@
         height: 600,
         scene: {
             preload: preload,
-            create: create,
-            update: update
+            create: create
         }
     };
 
     const game = new Phaser.Game(config);
 
     // スート
-    const suit = Math.floor(Math.random() * 4) + 1;
+    const suit = Phaser.Math.Between(1, 4);
     // 1~13の乱数を生成
-    const num = Math.floor(Math.random() * 13) + 1;
+    const num = Phaser.Math.Between(1, 13);
+    // 伏せカードの値
+    let prone = Phaser.Math.Between(1, 13);
+    // 数字がかぶらないようにする
+    while (num === prone) {
+        prone = Phaser.Math.Between(1, 13);
+    }
 
     function preload () {
         // ボタン
         this.load.image('high', 'assets/button1.png');
         this.load.image('low', 'assets/button2.png');
+        this.load.image('reset', 'assets/reset.png');
         // スペード
         this.load.image('sp1', 'assets/spade/sp1.png');
         this.load.image('sp2', 'assets/spade/sp2.png');
@@ -91,8 +97,6 @@
     }
 
     function create () {
-        this.add.image(600, 250, 'high');
-        this.add.image(600, 350, 'low');
         if (suit === 1) {
             // スペード
             switch (num) {
@@ -269,12 +273,60 @@
                     break;
             }
         }
+
+        // リセットボタン処理
+        const reset = this.add.sprite(600, 450, 'reset').setInteractive();
+        reset.on('pointerdown', function (pointer) {
+            this.setTint(0X908070);
+        });
+        reset.on('pointerout', function (pointer) {
+            this.clearTint();
+        });
+        reset.on('pointerup', function (pointer) {
+            this.clearTint();
+            location.reload();
+        });
+        // High ボタン処理
+        const high = this.add.sprite(600, 265, 'high').setInteractive();
+        high.on('pointerdown', function (pointer) {
+            this.setTint(0X908070);
+        });
+        high.on('pointerout', function (pointer) {
+            this.clearTint();
+        });
+        high.on('pointerup', function (pointer) {
+            this.clearTint();
+            ansHigh();
+        });
+        // Low ボタン処理
+        const low = this.add.sprite(600, 335, 'low').setInteractive();
+        low.on('pointerdown', function (pointer) {
+            this.setTint(0X908070);
+        });
+        low.on('pointerout', function (pointer) {
+            this.clearTint();
+        });
+        low.on('pointerup', function (pointer) {
+            this.clearTint();
+            ansLow();
+        });
     }
 
-    function update () {
-
+    function ansHigh () {
+        if (num < prone) {
+            alert(`正解!!! 答えは、${prone}`);
+        } else {
+            alert(`不正解... 答えは、${prone}`);
+        }
     }
 
+    function ansLow () {
+        if (num > prone) {
+            alert(`正解!!! 答えは、${prone}`);
+        } else {
+            alert(`不正解... 答えは、${prone}`);
+        }
+    }
 
 </script>
 
