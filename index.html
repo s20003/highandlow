@@ -13,7 +13,9 @@
     const config = {
         type: Phaser.AUTO,
         width: 1210,
-        height: 800,
+        height: 600,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        parent: "center",
         scene: {
             preload: preload,
             create: create
@@ -94,9 +96,11 @@
         this.load.image('di11', 'assets/diamond/di11.jpg');
         this.load.image('di12', 'assets/diamond/di12.jpg');
         this.load.image('di13', 'assets/diamond/di13.jpg');
+        // カード裏
+        this.load.image('trbk', 'assets/trbk.png');
     }
 
-    function create () {
+    function create(config) {
         if (suit === 1) {
             // スペード
             switch (num) {
@@ -274,6 +278,18 @@
             }
         }
 
+        // const card =  this.add.image(1000, 300, 'trbk');
+        const result = this.add.text(930, 70, 'Result')
+            .setFontSize(45)
+            .setFontFamily("Arial")
+            .setOrigin(0.5);
+        const non1 = this.add.text(700, 130, ' ')
+            .setFontSize(70)
+            .setFontFamily("Arial");
+        const non2 = this.add.text(800, 200, ' ')
+            .setFontSize(70)
+            .setFontFamily("Arial");
+
         // リセットボタン処理
         const reset = this.add.sprite(600, 450, 'reset').setInteractive();
         reset.on('pointerdown', function (pointer) {
@@ -296,7 +312,14 @@
         });
         high.on('pointerup', function (pointer) {
             this.clearTint();
-            ansHigh();
+            // 画面右側に正解を表示する
+            if (num < prone) {
+                non1.setText("あなたの勝ち!!!");
+                non2.setText(`答えは${prone}`);
+            } else {
+                non1.setText("あなたの負け...");
+                non2.setText(`答えは${prone}`);
+            }
         });
         // Low ボタン処理
         const low = this.add.sprite(600, 335, 'low').setInteractive();
@@ -308,13 +331,20 @@
         });
         low.on('pointerup', function (pointer) {
             this.clearTint();
-            ansLow();
+            // 画面右側に正解を表示する
+            if (num > prone) {
+                non1.setText("あなたの勝ち!!!");
+                non2.setText(`答えは${prone}`);
+            } else {
+                non1.setText("あなたの負け...");
+                non2.setText(`答えは${prone}`);
+            }
         });
     }
 
     function ansHigh () {
         if (num < prone) {
-            alert(`正解!!! 答えは、${prone}`);
+            //alert(`正解!!! 答えは、${prone}`);
         } else {
             alert(`不正解... 答えは、${prone}`);
         }
