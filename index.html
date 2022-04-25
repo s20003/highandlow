@@ -19,7 +19,8 @@
         scene: {
             preload: preload,
             create: create
-        }
+        },
+        backgroundColor: "006400"
     };
 
     const game = new Phaser.Game(config);
@@ -294,69 +295,77 @@
         const reset = this.add.sprite(600, 450, 'reset').setInteractive();
         reset.on('pointerdown', function (pointer) {
             this.setTint(0X908070);
-        });
-        reset.on('pointerout', function (pointer) {
-            this.clearTint();
-        });
-        reset.on('pointerup', function (pointer) {
-            this.clearTint();
-            location.reload();
-        });
+        })
+            .on('pointerout', function (pointer) {
+                this.clearTint();
+            })
+            .on('pointerup', function (pointer) {
+                this.clearTint();
+                location.reload();
+            });
         // High ボタン処理
         const high = this.add.sprite(600, 265, 'high').setInteractive();
         high.on('pointerdown', function (pointer) {
             this.setTint(0X908070);
-        });
-        high.on('pointerout', function (pointer) {
-            this.clearTint();
-        });
-        high.on('pointerup', function (pointer) {
-            this.clearTint();
-            // 画面右側に正解を表示する
-            if (num < prone) {
-                non1.setText("あなたの勝ち!!!");
-                non2.setText(`答えは${prone}`);
-            } else {
-                non1.setText("あなたの負け...");
-                non2.setText(`答えは${prone}`);
-            }
-        });
+        })
+            // .on('pointerout', function (pointer) {
+            //     this.clearTint();
+            // })
+            .on('pointerup', function (pointer) {
+                this.clearTint();
+                high.disableInteractive()
+                    .setTint(0X908070);
+                low.disableInteractive()
+                    .setTint(0X908070);
+                // 画面右側に正解を表示する
+                if (num < prone) {
+                    non1.setText("あなたの勝ち!!!");
+                    non2.setText(`答えは${prone}`);
+                } else {
+                    non1.setText("あなたの負け...");
+                    non2.setText(`答えは${prone}`);
+                }
+            });
         // Low ボタン処理
         const low = this.add.sprite(600, 335, 'low').setInteractive();
         low.on('pointerdown', function (pointer) {
             this.setTint(0X908070);
-        });
-        low.on('pointerout', function (pointer) {
-            this.clearTint();
-        });
-        low.on('pointerup', function (pointer) {
-            this.clearTint();
-            // 画面右側に正解を表示する
-            if (num > prone) {
-                non1.setText("あなたの勝ち!!!");
-                non2.setText(`答えは${prone}`);
-            } else {
-                non1.setText("あなたの負け...");
-                non2.setText(`答えは${prone}`);
-            }
-        });
+        })
+            // .on('pointerout', function (pointer) {
+            //     this.clearTint();
+            // })
+            .on('pointerup', function (pointer) {
+                this.clearTint();
+                high.disableInteractive()
+                    .setTint(0X908070);
+                low.disableInteractive()
+                    .setTint(0X908070);
+                // 画面右側に正解を表示する
+                if (num > prone) {
+                    non1.setText("あなたの勝ち!!!");
+                    non2.setText(`答えは${prone}`);
+                } else {
+                    non1.setText("あなたの負け...");
+                    non2.setText(`答えは${prone}`);
+                }
+            });
     }
 
-    function ansHigh () {
-        if (num < prone) {
-            //alert(`正解!!! 答えは、${prone}`);
-        } else {
-            alert(`不正解... 答えは、${prone}`);
-        }
-    }
-
-    function ansLow () {
-        if (num > prone) {
-            alert(`正解!!! 答えは、${prone}`);
-        } else {
-            alert(`不正解... 答えは、${prone}`);
-        }
-    }
+    // function ansHigh () {
+    //     if (num < prone) {
+    //         //alert(`正解!!! 答えは、${prone}`);
+    //     } else {
+    //         alert(`不正解... 答えは、${prone}`);
+    //     }
+    // }
+    //
+    // function ansLow () {
+    //     if (num > prone) {
+    //         alert(`正解!!! 答えは、${prone}`);
+    //     } else {
+    //         alert(`不正解... 答えは、${prone}`);
+    //     }
+    // }
 
 </script>
 
