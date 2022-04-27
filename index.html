@@ -308,9 +308,9 @@
         high.on('pointerdown', function (pointer) {
             this.setTint(0X908070);
         })
-            // .on('pointerout', function (pointer) {
-            //     this.clearTint();
-            // })
+            .on('pointerout', function (pointer) {
+                this.clearTint();
+            })
             .on('pointerup', function (pointer) {
                 this.clearTint();
                 high.disableInteractive()
@@ -331,9 +331,9 @@
         low.on('pointerdown', function (pointer) {
             this.setTint(0X908070);
         })
-            // .on('pointerout', function (pointer) {
-            //     this.clearTint();
-            // })
+            .on('pointerout', function (pointer) {
+                this.clearTint();
+            })
             .on('pointerup', function (pointer) {
                 this.clearTint();
                 high.disableInteractive()
@@ -350,22 +350,6 @@
                 }
             });
     }
-
-    // function ansHigh () {
-    //     if (num < prone) {
-    //         //alert(`正解!!! 答えは、${prone}`);
-    //     } else {
-    //         alert(`不正解... 答えは、${prone}`);
-    //     }
-    // }
-    //
-    // function ansLow () {
-    //     if (num > prone) {
-    //         alert(`正解!!! 答えは、${prone}`);
-    //     } else {
-    //         alert(`不正解... 答えは、${prone}`);
-    //     }
-    // }
 
 </script>
 
