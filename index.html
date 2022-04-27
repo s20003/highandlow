@@ -25,10 +25,15 @@
 
     const game = new Phaser.Game(config);
 
+    let high
+    let low
+
     // スート
     const suit = Phaser.Math.Between(1, 4);
     // 1~13の乱数を生成
     const num = Phaser.Math.Between(1, 13);
+    // 伏せスート
+    const suit2 = Phaser.Math.Between(1, 4);
     // 伏せカードの値
     let prone = Phaser.Math.Between(1, 13);
     // 数字がかぶらないようにする
@@ -101,7 +106,7 @@
         this.load.image('trbk', 'assets/trbk.png');
     }
 
-    function create(config) {
+    function create() {
         if (suit === 1) {
             // スペード
             switch (num) {
@@ -287,7 +292,7 @@
         const non1 = this.add.text(700, 130, ' ')
             .setFontSize(70)
             .setFontFamily("Arial");
-        const non2 = this.add.text(800, 200, ' ')
+        const non2 = this.add.text(750, 200, ' ')
             .setFontSize(70)
             .setFontFamily("Arial");
 
@@ -304,7 +309,7 @@
                 location.reload();
             });
         // High ボタン処理
-        const high = this.add.sprite(600, 265, 'high').setInteractive();
+        high = this.add.sprite(600, 265, 'high').setInteractive();
         high.on('pointerdown', function (pointer) {
             this.setTint(0X908070);
         })
@@ -318,16 +323,43 @@
                 low.disableInteractive()
                     .setTint(0X908070);
                 // 画面右側に正解を表示する
-                if (num < prone) {
-                    non1.setText("あなたの勝ち!!!");
-                    non2.setText(`答えは${prone}`);
+                if (suit2 === 1) {
+                    if (num < prone) {
+                        non1.setText("あなたの勝ち!!!");
+                        non2.setText(`答えは♠の${prone}`);
+                    } else {
+                        non1.setText("あなたの負け...");
+                        non2.setText(`答えは♠${prone}`);
+                    }
+                } else if (suit2 === 2) {
+                    if (num < prone) {
+                        non1.setText("あなたの勝ち!!!");
+                        non2.setText(`答えは♥の${prone}`);
+                    } else {
+                        non1.setText("あなたの負け...");
+                        non2.setText(`答えは♥${prone}`);
+                    }
+                } else if (suit2 === 3) {
+                    if (num < prone) {
+                        non1.setText("あなたの勝ち!!!");
+                        non2.setText(`答えは♣の${prone}`);
+                    } else {
+                        non1.setText("あなたの負け...");
+                        non2.setText(`答えは♣${prone}`);
+                    }
                 } else {
-                    non1.setText("あなたの負け...");
-                    non2.setText(`答えは${prone}`);
+                    if (num < prone) {
+                        non1.setText("あなたの勝ち!!!");
+                        non2.setText(`答えは◆の${prone}`);
+                    } else {
+                        non1.setText("あなたの負け...");
+                        non2.setText(`答えは◆${prone}`);
+                    }
                 }
+
             });
         // Low ボタン処理
-        const low = this.add.sprite(600, 335, 'low').setInteractive();
+        low = this.add.sprite(600, 335, 'low').setInteractive();
         low.on('pointerdown', function (pointer) {
             this.setTint(0X908070);
         })
@@ -341,12 +373,38 @@
                 low.disableInteractive()
                     .setTint(0X908070);
                 // 画面右側に正解を表示する
-                if (num > prone) {
-                    non1.setText("あなたの勝ち!!!");
-                    non2.setText(`答えは${prone}`);
+                if (suit2 === 1) {
+                    if (num > prone) {
+                        non1.setText("あなたの勝ち!!!");
+                        non2.setText(`答えは♠の${prone}`);
+                    } else {
+                        non1.setText("あなたの負け...");
+                        non2.setText(`答えは♠${prone}`);
+                    }
+                } else if (suit2 === 2) {
+                    if (num > prone) {
+                        non1.setText("あなたの勝ち!!!");
+                        non2.setText(`答えは♥の${prone}`);
+                    } else {
+                        non1.setText("あなたの負け...");
+                        non2.setText(`答えは♥${prone}`);
+                    }
+                } else if (suit2 === 3) {
+                    if (num > prone) {
+                        non1.setText("あなたの勝ち!!!");
+                        non2.setText(`答えは♣の${prone}`);
+                    } else {
+                        non1.setText("あなたの負け...");
+                        non2.setText(`答えは♣${prone}`);
+                    }
                 } else {
-                    non1.setText("あなたの負け...");
-                    non2.setText(`答えは${prone}`);
+                    if (num > prone) {
+                        non1.setText("あなたの勝ち!!!");
+                        non2.setText(`答えは◆の${prone}`);
+                    } else {
+                        non1.setText("あなたの負け...");
+                        non2.setText(`答えは◆${prone}`);
+                    }
                 }
             });
     }
