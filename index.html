@@ -29,16 +29,20 @@
     let low
 
     // スート
-    const suit = Phaser.Math.Between(1, 4);
+    const suit = Between(1, 4);
     // 1~13の乱数を生成
-    const num = Phaser.Math.Between(1, 13);
+    const num = Between(1, 13);
     // 伏せスート
-    const suit2 = Phaser.Math.Between(1, 4);
+    const suit2 = Between(1, 4);
     // 伏せカードの値
-    let prone = Phaser.Math.Between(1, 13);
+    let prone = Between(1, 13);
     // 数字がかぶらないようにする
     while (num === prone) {
         prone = Phaser.Math.Between(1, 13);
+    }
+
+    function Between(x, y) {
+        return Phaser.Math.Between(x, y);
     }
 
     function preload () {
